@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login/github', 'Auth\LoginController@github');
+Route::get('login/google', 'Auth\LoginController@google');
+
+Route::get('login/github/redirect', 'Auth\LoginController@githubRedirect');
+Route::get('login/google/redirect', 'Auth\LoginController@googleRedirect');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
