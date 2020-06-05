@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// Home page (on the starting page) redirection
+Route::get('/home', function () {
     return view('welcome');
+});
+
+// Events page (on the starting page) redirection
+Route::get('/events', function () {
+    return view('events');
 });
