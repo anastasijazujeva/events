@@ -55,20 +55,30 @@ class LoginController extends Controller
 
     public function githubRedirect()
     {
-        $user = Socialite::driver('github')->user();
+        try {
+            $githubUser = Socialite::driver('github')->user();
+            if ($githubUser->name === null) $name=$githubUser->nickname;
+            else $name=$githubUser->name;
+            $existUserByEmail = User::where('email', $githubUser->email)->first();
+            $existUserByUsername = User::where('username', $githubUser->nickname)->first();
 
-        $user = User::firstOrCreate(
-            [
-                'email' => $user->email
-            ],
-            ['
-                name' => $user->name,
-                'password' => Hash::make(Str::random(24))
-            ]);
-
-        Auth::login($user, true);
-
-        return redirect('/home');
+            if ($existUserByEmail) {
+                Auth::loginUsingId($existUserByEmail->id);
+            } else if ($existUserByUsername) {
+                Auth::loginUsingId($existUserByUsername->id);
+            } else {
+                $user = new User;
+                $user->name = $name;
+                $user->username = $githubUser->nickname;
+                $user->email = $githubUser->email;
+                $user->password = Hash::make(Str::random(24));
+                $user->save();
+                Auth::loginUsingId($user->id);
+            }
+            return redirect()->to('/home');
+        } catch (Exception $e) {
+            return 'Error';
+        }
     }
 
     public function googleRedirect()
@@ -76,13 +86,19 @@ class LoginController extends Controller
         try {
 
             $googleUser = Socialite::driver('google')->user();
-            $existUser = User::where('email', $googleUser->email)->first();
+            $arr = explode("@", $googleUser->email, 2);
+            $username = $arr[0];
+            $existUserByEmail = User::where('email', $googleUser->email)->first();
+            $existUserByUsername = User::where('username', $username)->first();
 
-            if ($existUser) {
-                Auth::loginUsingId($existUser->id);
+            if ($existUserByEmail) {
+                Auth::loginUsingId($existUserByEmail->id);
+            } else if ($existUserByUsername){
+                Auth::loginUsingId($existUserByUsername->id);
             } else {
                 $user = new User;
                 $user->name = $googleUser->name;
+                $user->username = $username;
                 $user->email = $googleUser->email;
                 $user->password = Hash::make(Str::random(24));
                 $user->save();
