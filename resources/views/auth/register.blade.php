@@ -30,6 +30,21 @@
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
+                                            <input id="username" type="text"
+                                                   placeholder="Username"
+                                                   class="form-control @error('username') is-invalid @enderror" name="username"
+                                                   value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                                            @error('username')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
                                             <input id="email" type="email"
                                                    class="form-control @error('email') is-invalid @enderror"
                                                    placeholder="E-Mail Address"

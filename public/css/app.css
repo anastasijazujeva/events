@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    min-width: 1200px;
+}
+
+.topnav {
+    background-color: #0E0E0E;
+    height: 60px;
+}
+
+.topnav a.social {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 19px 35px 10px 20px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.information {
+    background-color: #f2f2f2;
+}
+
+.information .main-information .title {
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.information .main-information .date {
+    padding: 10px;
+}
+
+.information .place {
+    padding-left: 10px;
+}
+
+.information .description {
+    padding-left: 10px;
+    padding-bottom: 1px;
+}
