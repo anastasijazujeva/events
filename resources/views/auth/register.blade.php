@@ -82,6 +82,13 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group row">
+                                        <div class="col-md-6" id="userrole">
+                                            <label for="role"><input type="radio" id="role" name="role" value="regular" checked>Regular</label>
+                                            <label for="role" style="padding-left: 15px;"><input type="radio" id="role" name="role" value="organizer">Organizer</label>
+                                        </div>
+                                    </div>
+
                                     <div class="or">OR</div>
 
                                     <div class="form-group row mb-0">

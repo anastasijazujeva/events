@@ -17,7 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
@@ -29,30 +30,32 @@
                 <a href="{{ url('/home') }}" class="social">HOME</a>
             @else
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="social">REGISTER</a>
+                    <div class="button-container">
+                        <a href="{{ route('register') }}" class="social">REGISTER</a>
+                    </div>
                 @endif
-                <a href="{{ route('login') }}" class="social">LOGIN</a>
+                <div class="button-container">
+                    <a href="{{ route('login') }}" class="social">LOGIN</a>
+                </div>
             @endauth
         </div>
     @endif
 @else
-    <li class="nav-item dropdown">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }} <span class="caret"></span>
-        </a>
-
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    <div class="topnav">
+        <div class="dropdown">
+            <img src="https://img.icons8.com/nolan/64/info.png" alt="icon" class="rounded-circle">
+            <div class="dropdown-content">
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
             </form>
         </div>
-    </li>
+        <p class="social">
+            Welcome, {{ Auth::user()->username }} <span class="caret"></span>
+        </p>
+    </div>
 @endguest
 @yield('content')
 </body>
