@@ -4,22 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-
-    // Creates Comment table in the event-db database
     public function up()
     {
-        Schema::create('comment', function (Blueprint $table) {
-            $table->increments('comment_id');
-            $table->foreignId('user_id')->constrained();
+        Schema::create('events', function (Blueprint $table) {
+            $table->increments('event_id');
             $table->string('title', 100);
-            $table->text('text')->nullable();
+            $table->datetime('date_and_time');
+            $table->string('place', 100);
+            $table->string('category', 100);
+            $table->string('price', 100);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateCommentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('events');
     }
 }
