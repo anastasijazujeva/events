@@ -14,7 +14,7 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->increments('comment_id');
+            $table->id('comment_id');
             $table->foreignId('user_id')->constrained(); // ????
             $table->string('title', 100);
             $table->text('text')->nullable();
