@@ -49,6 +49,18 @@ body {
     padding-bottom: 1px;
 }
 
+.align-items-left {
+    float:left;
+    margin-top: 15px;
+}
+
+.align-items-left a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Nunito', Arial, serif;
+    padding-left: 30px;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
