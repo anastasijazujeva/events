@@ -8,6 +8,6 @@ class Comment extends Model
 {
     public function events()
     {
-        return $this->belongsTo('App\Event', 'event_FK');
+        return $this->belongsTo('App\Event');
     }
 }

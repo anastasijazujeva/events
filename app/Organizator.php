@@ -8,11 +8,11 @@ class Organizator extends Model
 {
     public function user()
     {
-        return $this->belongsTo('App\Users', 'user_FK');
+        return $this->belongsTo('App\Users');
     }
 
     public function events()
     {
-        return $this->hasMany('App\Event', 'event_id_FK');
+        return $this->hasMany('App\Event');
     }
 }

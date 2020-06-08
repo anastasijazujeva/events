@@ -13,11 +13,11 @@ class Event extends Model
 
     public function organizator()
     {
-        return $this->belongsTo('App\Organizator', 'organizator_id_FK');
+        return $this->belongsTo('App\Organizator');
     }
 
     public function comment()
     {
-        return $this->hasMany('App\Comment', 'comment_FK');
+        return $this->hasMany('App\Comment');
     }
 }

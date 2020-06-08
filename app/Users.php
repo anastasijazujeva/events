@@ -8,7 +8,7 @@ class Users extends Model
 {
     public function organizator()
     {
-        return $this->hasOne('App\Organizator', 'organizator_FK');
+        return $this->hasOne('App\Organizator');
     }
 
     public function events()
