@@ -87,6 +87,7 @@ class RegisterController extends Controller
         $profile = new Profile();
         $profile->title = $user->username;
         $profile->description = 'Description n/a';
+        $profile->image = 'images/anonymus.jpg';
 
         $user->profile()->save($profile);
         return $user;
