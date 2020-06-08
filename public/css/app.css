@@ -54,6 +54,8 @@ body {
     display: inline-block;
     float: right;
     padding-right: 20px;
+    height: 60px;
+    width:80px;
 }
 
 .dropdown-content {
@@ -62,6 +64,7 @@ body {
     background-color: #000000;
     min-width: 160px;
     z-index: 1;
+    top: 60px;
 }
 
 .dropdown-content a {
@@ -78,8 +81,4 @@ body {
 .dropdown:hover > .dropdown-content {
     display: block;
     right: 0px;
-}
-
-.topnav img {
-    width: 60px;
 }

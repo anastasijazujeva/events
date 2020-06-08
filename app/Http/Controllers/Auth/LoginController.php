@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
@@ -73,6 +74,11 @@ class LoginController extends Controller
                 $user->email = $githubUser->email;
                 $user->password = Hash::make(Str::random(24));
                 $user->save();
+                $profile = new Profile();
+                $profile->title = $user->username;
+                $profile->description = 'Description n/a';
+                $profile->image = 'images/profile/anonymus.jpg';
+                $user->profile()->save($profile);
                 Auth::loginUsingId($user->id);
             }
             return redirect()->to('/home');
@@ -102,6 +108,11 @@ class LoginController extends Controller
                 $user->email = $googleUser->email;
                 $user->password = Hash::make(Str::random(24));
                 $user->save();
+                $profile = new Profile();
+                $profile->title = $user->username;
+                $profile->description = 'Description n/a';
+                $profile->image = 'images/profile/anonymus.jpg';
+                $user->profile()->save($profile);
                 Auth::loginUsingId($user->id);
             }
             return redirect()->to('/home');
