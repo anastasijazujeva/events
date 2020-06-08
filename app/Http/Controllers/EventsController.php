@@ -42,7 +42,7 @@ class EventsController extends Controller
         $event->organizator_id = auth()->user()->organizator->id;
 
         $imagePath = request('image')->store('images/events', 'public');
-        $image = Image::make(public_path() . "/{$imagePath}")->fit(1200, 12пше 00);
+        $image = Image::make(public_path() . "/{$imagePath}")->fit(1200, 1200);
         $image->save();
 
         $event->image = $imagePath;
