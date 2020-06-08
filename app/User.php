@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return ($this->role == 'organizer');
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }
