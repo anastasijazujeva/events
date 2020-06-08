@@ -42,10 +42,17 @@
     @endif
 @else
     <div class="topnav">
+        <div class="align-items-left">
+            <a href="{{ url('/home') }}">HOME</a>
+            <a href="#">MY EVENTS</a>
+        </div>
         <div class="dropdown">
             <img src="{{ auth()->user()->profile->profileImage() }}" alt="icon" class="rounded-circle" style="width: 45px; height: 45px; position: relative; top: 6px;">
             <div class="dropdown-content">
                 <a href="/profile/{{ auth()->user()->id }}">Profile</a>
+                @if(auth()->user()->isOrganizer())
+                    <a href="/event/create">Add new event</a>
+                @endif
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             </div>

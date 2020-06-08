@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Organizator;
 use App\Profile;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -74,6 +75,14 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
         ]);
+
+        if ($user->role == 'organizer') {
+            $organizator = new Organizator;
+            $organizator->name = $user->name;
+            $organizator->username = $user->username;
+            $organizator->email = $user->email;
+            $user->organizator()->save($organizator);
+        }
 
         $profile = new Profile();
         $profile->title = $user->username;

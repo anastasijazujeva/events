@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $events = Event::all();
+    return view('welcome', ['events' => $events]);
 });
 
 Route::get('login/github', 'Auth\LoginController@github');
@@ -31,6 +33,7 @@ Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.edit');
 
-Route::get('/details', function () {
-    return view('eventsdetails');
-});
+Route::get('/event/create', 'EventsController@create');
+Route::post('/event', 'EventsController@store');
+Route::get('/event/{id}', 'EventsController@index');
+

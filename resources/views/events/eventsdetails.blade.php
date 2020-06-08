@@ -3,22 +3,22 @@
 @section('content')
     <div class="row pt-4">
         <div class="leftside">
-            <p class="small">Category</p>
-            <h1>Title</h1>
+            <p class="small">{{ $event[0]->category }}</p>
+            <h1>{{ $event[0]->title }}</h1>
             <p>Created by ...</p>
-            <img alt="photo" class="eventimg" src="https://shapingthefuture.ch/wp-content/uploads/2020/01/Party.jpg">
+            <img alt="photo" class="eventimg" src="../{{ $event[0]->image }}">
             <h3 class="desc">Description</h3>
-            <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
+            <p>{{ $event[0]->description }}</p>
         </div>
         <div class="rightside">
             <div class="info">
                 <h3>Information</h3>
                 <h4>Date and Time:</h4>
-                <p>date and time</p>
+                <p>{{ $event[0]->date_and_time }}</p>
                 <h4>Price:</h4>
-                <p>price</p>
+                <p>{{ $event[0]->price }}</p>
                 <h4>Place:</h4>
-                <p>place</p>
+                <p>{{ $event[0]->place }}</p>
             </div>
         </div>
     </div>

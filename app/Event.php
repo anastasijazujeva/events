@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    protected $guarded = [];
+
     public function user()
     {
-        return $this->belongsToMany('App\Users');
+        return $this->belongsToMany('App\User');
     }
 
     public function organizator()
