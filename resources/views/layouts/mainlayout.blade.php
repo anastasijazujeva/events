@@ -43,7 +43,7 @@
 @else
     <div class="topnav">
         <div class="align-items-left">
-            <a href="{{ url('/') }}">HOME</a>
+            <a href="{{ url('/home') }}">HOME</a>
             <a href="#">MY EVENTS</a>
         </div>
         <div class="dropdown">

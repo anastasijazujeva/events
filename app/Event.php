@@ -8,7 +8,7 @@ class Event extends Model
 {
     public function user()
     {
-        return $this->belongsToMany('App\Users');
+        return $this->belongsToMany('App\User');
     }
 
     public function organizator()

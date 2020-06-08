@@ -12795,7 +12795,7 @@ module.exports = {
      * // Avoid excessively updating the position while scrolling.
      * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
      *
-     * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+     * // Invoke `renewToken` when the click events is fired, but not more than once every 5 minutes.
      * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
      * jQuery(element).on('click', throttled);
      *
@@ -19303,7 +19303,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
+ * for events that are broadcast by Laravel. Echo and events broadcasting
  * allows your team to easily build robust real-time web applications.
  */
 // import Echo from 'laravel-echo';

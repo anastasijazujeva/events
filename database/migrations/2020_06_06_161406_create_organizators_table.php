@@ -15,9 +15,13 @@ class CreateOrganizatorsTable extends Migration
     {
         Schema::create('organizators', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

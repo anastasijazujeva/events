@@ -51,4 +51,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    public function organizator()
+    {
+        return $this->hasOne('App\Organizator');
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany('App\Event', 'event_user', 'user_id', 'event_id');
+    }
 }
