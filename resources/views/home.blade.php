@@ -9,7 +9,7 @@
                 <img alt="photo" class="w-100" src="https://designshack.net/wp-content/uploads/1-1.jpg">
                 <div class="information">
                     <div class="main-information d-flex justify-content-between align-items-baseline">
-                        <span class="title">{{ $event->title }}</span>
+                        <a href="/details"><span class="title">{{ $event->title }}</span></a>
                         <span class="date">{{ $event->date_and_time }}</span>
                     </div>
                     <div class="place">
