@@ -57,3 +57,10 @@
     text-align: center;
     margin-bottom: 30px;
 }
+
+
+.wrapper {
+    margin: 0 auto;
+    width: 1200px;
+    clear: both;
+}
