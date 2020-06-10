@@ -113,3 +113,12 @@ body {
     display: block;
     right: 0px;
 }
+
+.container-of-content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.justify-content-both {
+    clear: both;
+}
