@@ -24,7 +24,6 @@
 
 </head>
 <body>
-
 @guest
     @if (Route::has('login'))
         <div class="topnav">
