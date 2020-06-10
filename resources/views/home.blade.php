@@ -1,9 +1,9 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-    <div class="container">
+    <div class="container-of-content">
 
-        <div class="row pt-4">
+        <div class="row pt-4 justify-content-both">
             @foreach($events as $event)
                 <div class="col-4 pt-5">
                     <img alt="photo" class="w-100" src="{{ $event->image }}">
