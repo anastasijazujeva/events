@@ -31,11 +31,11 @@
             @else
                 @if (Route::has('register'))
                     <div class="button-container">
-                        <a href="{{ route('register') }}" class="social">REGISTER</a>
+                        <a href="{{ route('register') }}" class="login-register">REGISTER</a>
                     </div>
                 @endif
                 <div class="button-container">
-                    <a href="{{ route('login') }}" class="social">LOGIN</a>
+                    <a href="{{ route('login') }}" class="login-register">LOGIN</a>
                 </div>
             @endauth
         </div>
@@ -47,7 +47,8 @@
             <a href="#">MY EVENTS</a>
         </div>
         <div class="dropdown">
-            <img src="{{ auth()->user()->profile->profileImage() }}" alt="icon" class="rounded-circle" style="width: 45px; height: 45px; position: relative; top: 6px;">
+            <img src="{{ auth()->user()->profile->profileImage() }}" alt="icon" class="rounded-circle"
+                 style="width: 45px; height: 45px; position: relative; top: 6px;">
             <div class="dropdown-content">
                 <a href="/profile/{{ auth()->user()->id }}">Profile</a>
                 @if(auth()->user()->isOrganizer())
@@ -61,9 +62,10 @@
             </form>
         </div>
         <p class="social">
-            Welcome, {{ Auth::user()->username }} <span class="caret"></span>
+            Welcome, {{ Auth::user()->name }} <span class="caret"></span>
         </p>
     </div>
+
 @endguest
 @yield('content')
 </body>
