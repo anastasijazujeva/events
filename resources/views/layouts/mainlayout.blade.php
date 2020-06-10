@@ -21,9 +21,31 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/eventdetails-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/topbtn.css') }}" rel="stylesheet">
 
 </head>
 <body>
+
+<button onclick="topFunction()" id="topbtn" title="Go to top">Top</button>
+<script>
+    var topbutton = document.getElementById("topbtn");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            topbutton.style.display = "block";
+        } else {
+            topbutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
 @guest
     @if (Route::has('login'))
         <div class="topnav">
