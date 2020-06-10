@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Organizator;
 use Illuminate\Http\Request;
 use App\Event;
+use Intervention\Image\Facades\Image;
 
 class EventsController extends Controller
 {
@@ -39,9 +40,12 @@ class EventsController extends Controller
         $event->description = $data['description'];
         $event->price = $data['price'];
         $event->organizator_id = auth()->user()->organizator->id;
-        $imagePath = request('image')->store('images/events', 'public');
-        $event->image = $imagePath;
 
+        $imagePath = request('image')->store('images/events', 'public');
+        $image = Image::make(public_path() . "/{$imagePath}")->fit(1200, 1200);
+        $image->save();
+
+        $event->image = $imagePath;
         $event->save();
 
         $events = Event::all();

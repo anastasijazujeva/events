@@ -77,7 +77,7 @@ class LoginController extends Controller
                 $profile = new Profile();
                 $profile->title = $user->username;
                 $profile->description = 'Description n/a';
-                $profile->image = 'images/profile/anonymus.jpg';
+                $profile->image = 'images/anonymus.jpg';
                 $user->profile()->save($profile);
                 Auth::loginUsingId($user->id);
             }
@@ -111,7 +111,7 @@ class LoginController extends Controller
                 $profile = new Profile();
                 $profile->title = $user->username;
                 $profile->description = 'Description n/a';
-                $profile->image = 'images/profile/anonymus.jpg';
+                $profile->image = 'images/anonymus.jpg';
                 $user->profile()->save($profile);
                 Auth::loginUsingId($user->id);
             }
