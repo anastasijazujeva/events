@@ -5,7 +5,7 @@
 
         <div class="row pt-4">
             @foreach($events as $event)
-                <div class="col-4">
+                <div class="col-4 pt-5">
                     <img alt="photo" class="w-100" src="{{ $event->image }}">
                     <div class="information">
                         <div class="main-information d-flex justify-content-between align-items-baseline">

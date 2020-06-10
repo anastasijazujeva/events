@@ -27,12 +27,12 @@
     @if (Route::has('login'))
         <div class="topnav">
             @auth
-                <a href="{{ url('/home') }}" class="social">HOME</a>
+                <a href="{{ url('/home') }}" class="login-register">HOME</a>
             @else
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="social">REGISTER</a>
+                    <a href="{{ route('register') }}" class="login-register">REGISTER</a>
                 @endif
-                <a href="{{ route('login') }}" class="social">LOGIN</a>
+                <a href="{{ route('login') }}" class="login-register">LOGIN</a>
             @endauth
         </div>
     @endif
