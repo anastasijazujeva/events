@@ -1,0 +1,59 @@
+.eventimg {
+    width: 600px;
+}
+
+.small {
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 1px;
+}
+
+.desc {
+    margin-top: 30px;
+}
+
+.leftside {
+    margin-left: 50px;
+}
+
+.info {
+    border-style: solid;
+    border-width: 1px;
+    background: #f6f6f6;
+    padding: 15px;
+}
+
+.bottom {
+    border-bottom-style: solid;
+    border-width: 1px;
+}
+
+.rightside {
+    margin-top: 240px;
+    margin-left: 270px;
+}
+
+.comloc {
+    text-align: center;
+}
+
+.par {
+    font-size: 14px;
+    margin-left: 275px;
+    margin-bottom: -2px;
+}
+
+.commentbtn {
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 10px;
+    margin-left: 275px;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+.comments {
+    text-align: center;
+    margin-bottom: 30px;
+}
