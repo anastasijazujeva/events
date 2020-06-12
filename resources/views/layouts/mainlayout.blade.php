@@ -75,7 +75,7 @@
             <div class="dropdown-content">
                 <a href="/profile/{{ auth()->user()->id }}">Profile</a>
                 @if(auth()->user()->isOrganizer())
-                    <a href="/event/create">Add new event</a>
+                    <a href="/event/new/create">Add new event</a>
                 @endif
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

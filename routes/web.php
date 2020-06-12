@@ -33,7 +33,8 @@ Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.edit');
 
-Route::get('/event/create', 'EventsController@create');
+Route::get('/event/new/create', 'EventsController@create');
 Route::post('/event', 'EventsController@store');
 Route::get('/event/{id}', 'EventsController@index');
 
+Route::post('comment/store', 'CommentController@store')->name('comment.add');

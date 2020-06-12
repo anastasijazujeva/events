@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Organizator;
 use Illuminate\Http\Request;
 use App\Event;
+use App\Organizator;
 use Intervention\Image\Facades\Image;
 
 class EventsController extends Controller
 {
     public function index($id)
     {
-        $event = Event::where('event_id', $id)->get();
+        $event = Event::findOrFail($id);
         return view('events.eventsdetails', ['event' => $event]);
     }
 

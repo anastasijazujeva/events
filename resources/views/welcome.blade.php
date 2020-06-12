@@ -9,7 +9,7 @@
                     <img alt="photo" class="w-100" src="{{ $event->image }}">
                     <div class="information">
                         <div class="main-information d-flex justify-content-between align-items-baseline">
-                            <a href="/event/{{ $event->event_id }}"><span class="title">{{ $event->title }}</span></a>
+                            <a href="/event/{{ $event->id }}"><span class="title">{{ $event->title }}</span></a>
                             <span class="date">{{ $event->date_and_time }}</span>
                         </div>
                         <div class="place">
