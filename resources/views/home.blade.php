@@ -18,14 +18,16 @@
                         <div class="description">
                             <p>{{ $event->category }}</p>
                             <div class="follow-button-wrapper">
-                                @if(auth()->user()->events->count() > 0)
-                                    @if(auth()->user()->events->contains($event))
-                                        <button class="unfollow" data-id="{{ $event->id }}">Unregister</button>
+                                @if(auth()->user())
+                                    @if(auth()->user()->events->count() > 0)
+                                        @if(auth()->user()->events->contains($event))
+                                            <button class="unfollow" data-id="{{ $event->id }}">Unregister</button>
+                                        @else
+                                            <button class="follow" data-id="{{ $event->id }}">Register</button>
+                                        @endif
                                     @else
                                         <button class="follow" data-id="{{ $event->id }}">Register</button>
                                     @endif
-                                @else
-                                    <button class="follow" data-id="{{ $event->id }}">Register</button>
                                 @endif
                             </div>
                         </div>

@@ -5,7 +5,7 @@
         <div class="row pt-2">
             <div class="leftside">
                 <h1>{{ $event->title }}</h1>
-                <p>Created by ...</p>
+                <p>Created by <span class="creatorsize">{{ $event->organizator->username }}</span></p>
                 <p class="small">{{ $event->category }}</p>
                 <img alt="photo" class="eventimg" src="../{{ $event->image }}">
                 <h3 class="desc">Description</h3>
@@ -25,13 +25,24 @@
         </div>
         <div>
             <h3 class="comloc">Comments</h3>
-            <p class="par">Write your comment:</p>
-            <div class="comments">
-                <textarea name="comment" rows="5" cols="70"></textarea>
-            </div>
-            <button class="commentbtn" id="submit_comment">Submit</button>
+            <form method="post" action="{{ route('comment.add') }}">
+                @csrf
+                <p class="par">Write your comment:</p>
+                <div class="comments">
+                    <textarea name="comment" rows="5" cols="70"></textarea>
+                </div>
+                <input name="event_id" value="{{ $event->id }}" style="display:none">
+                <button class="commentbtn" id="submit_comment">Submit</button>
+            </form>
         </div>
-    </div>
 
+        @foreach($event->comment as $comment)
+            <div class="comment-section">
+                <p class="usercomname"><img src="{{ $comment->user->profile->image }}" alt="user_photo"><strong> Name: </strong>{{ $comment->user->username }}</p>
+                <p>{{ $comment->text }}</p>
+                <p class="commentdate"><strong>Created: </strong>{{ $comment->created_at }}</p>
+            </div>
+        @endforeach
+    </div>
 
 @endsection

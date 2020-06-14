@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Organizator;
 use Illuminate\Http\Request;
 use App\Event;
-use Illuminate\Support\Facades\DB;
+use App\Organizator;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 
 class EventsController extends Controller
 {
