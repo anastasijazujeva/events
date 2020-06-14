@@ -53,7 +53,7 @@ class EventPolicy
      */
     public function update(User $user, Event $event)
     {
-        return $user->role == 'organizer';
+        return $user->id == $event->organizator->user_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class EventPolicy
      */
     public function delete(User $user, Event $event)
     {
-        return $user->role == 'organizer';
+        return $user->id == $event->organizator->user_id;
     }
 
     /**

@@ -1,0 +1,44 @@
+button {
+    border: none;
+    padding: 5px 10px;
+    color: whitesmoke;
+    width: 120px;
+    border-radius: 5px;
+    transition: all .3s ease-in;
+}
+
+.description {
+    display: flex;
+}
+
+.follow-button-wrapper {
+    margin-left: auto;
+    margin-right: 10px;
+    position: relative;
+    bottom: 6px;
+}
+
+button:active {
+    outline: none;
+}
+
+button:visited {
+    outline: none;
+}
+
+.follow {
+    background: green;
+    color: white;
+    margin: 10px;
+    align-self: center;
+}
+
+.unfollow {
+    background: red;
+    color: white;
+    margin: 10px;
+    align-self: center;
+}
+
+
+

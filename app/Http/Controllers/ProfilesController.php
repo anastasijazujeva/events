@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
@@ -41,7 +44,7 @@ class ProfilesController extends Controller
 
         if (request('image')) {
             $imagePath = request('image')->store('images/profile', 'public');
-            $image = Image::make(public_path() . "/{$imagePath}")->fit(1200,1200);
+            $image = Image::make(public_path() . "/{$imagePath}")->fit(1200, 1200);
             $image->save();
             $imageArray = ['image' => $imagePath];
         }
@@ -52,5 +55,34 @@ class ProfilesController extends Controller
         ));
 
         return redirect('/profile/' . $user->id);
+    }
+
+    public function showProfilesRegisteredEvents(User $user)
+    {
+        $this->authorize('update', $user->profile);
+        $events = $user->events;
+        return view('events.user-registered-event-list', ['events' => $events]);
+    }
+
+    public function unregisterUserFromEvent(User $user, Event $event)
+    {
+
+        DB::table('event_user')
+            ->where('user_id', '=', $user->id)
+            ->where('event_id', '=', $event->id)
+            ->delete();
+
+        $redirectLink = 'profile/' . $user->id . '/registered/event';
+        return redirect($redirectLink);
+    }
+
+    public function showProfilesCreatedEvents(User $user)
+    {
+        $this->authorize('update', $user->profile);
+        $this->authorize('create', Event::class);
+
+        $events = Event::where('organizator_id', auth()->user()->organizator->id)->get();
+
+        return view('events.user-created-event-list', ['events' => $events]);
     }
 }

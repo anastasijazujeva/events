@@ -1,0 +1,75 @@
+.registered-event-list-wrapper {
+    width: 1000px;
+    margin: 40px auto 0;
+    display: flex;
+    background-color: #f2f2f2;
+    box-shadow: 0px 8px 6px -2px darkgray;
+}
+
+.event-image-wrapper {
+    width: 200px;
+    height: 200px;
+}
+
+.event-image-wrapper img {
+    height: 100%;
+}
+
+.event-information-wrapper {
+    margin: 10px 30px;
+}
+
+.title-date-and-time-wrapper {
+    display: flex;
+    width: 750px;
+}
+
+.title-date-and-time-wrapper .date-and-time-wrapper {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.price-wrapper {
+    position: relative;
+    top: 40px;
+    display: flex;
+}
+
+.edit-delete-icons-wrapper {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.edit-delete-icons-wrapper img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.unregister-link {
+    margin-left: auto;
+    margin-right: 0;
+    background-color: #f44336;
+    opacity: 0.8;
+    color: white;
+    padding: 11px 21px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s ease-in;
+    /*border-radius: 50%;*/
+    position: relative;
+    bottom: 10px;
+    box-shadow: 0px 8px 6px -4px #DF0000;
+}
+
+.unregister-link:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+    transition: all .2s ease-in;
+}
+
+.unregister-link:active {
+    box-shadow: none;
+}

@@ -10,7 +10,7 @@ class Event extends Model
 
     public function user()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'event_user', 'event_id', 'user_id');
     }
 
     public function organizator()

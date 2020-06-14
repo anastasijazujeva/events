@@ -2,13 +2,15 @@
 
 @section('content')
     <div class="container">
-        <form action="/event" enctype="multipart/form-data" method="POST">
+        <form action="/event/{{ $event->id }}" enctype="multipart/form-data" method="POST">
             @csrf
+            @method('PATCH')
+
             <div class="row">
                 <div class="col-8 offset-2">
 
                     <div class="row">
-                        <h2>Create event</h2>
+                        <h2>Edit event</h2>
                     </div>
 
                     <div class="form-group row">
@@ -18,6 +20,7 @@
                                type="text"
                                class="form-control @error('title') is-invalid @enderror"
                                name="title"
+                               value="{{ old('title') ?? $event->title }}"
                                required autocomplete="title" autofocus>
 
                         @error('title')
@@ -32,11 +35,10 @@
 
                         <input id="date_and_time"
                                type="datetime-local"
-                               value="2020-01-01 00:00"
                                class="form-control @error('date_and_time') is-invalid @enderror"
                                name="date_and_time"
-                               required autocomplete="date"
-                               autofocus>
+                               value="{{ $event->date_and_time }}"
+                               required autocomplete="date" autofocus>
 
                         @error('date_and_time')
                         <span class="invalid-feedback" role="alert">
@@ -52,6 +54,7 @@
                                type="text"
                                class="form-control @error('place') is-invalid @enderror"
                                name="place"
+                               value="{{ $event->place }}"
                                required autocomplete="place" autofocus>
 
                         @error('place')
@@ -68,6 +71,7 @@
                                type="text"
                                class="form-control @error('category') is-invalid @enderror"
                                name="category"
+                               value="{{ $event->category }}"
                                required autocomplete="category" autofocus>
 
                         @error('category')
@@ -84,6 +88,7 @@
                                type="text"
                                class="form-control @error('price') is-invalid @enderror"
                                name="price"
+                               value="{{ $event->price }}"
                                required autocomplete="price" autofocus>
 
                         @error('price')
@@ -100,6 +105,7 @@
                                type="text"
                                class="form-control @error('description') is-invalid @enderror"
                                name="description"
+                               value="{{ $event->description }}"
                                required autocomplete="descrpition" autofocus>
 
                         @error('description')
@@ -120,7 +126,7 @@
                     </div>
 
                     <div class="row pt-3">
-                        <button class="btn btn-primary">Create event</button>
+                        <button class="btn btn-primary">Update event</button>
                     </div>
 
 

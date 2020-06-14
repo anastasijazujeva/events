@@ -12,6 +12,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,7 +24,62 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/eventdetails-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user-registered-event-list-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/follow-button-style.css') }}" rel="stylesheet">
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.follow, .unfollow').click(function () {
+
+                $(this).text(function (_, text) {
+                    return text === "Register" ? "Unregister" : "Register";
+                });
+
+                let event_id = $(this).data('id');
+
+                if ($(this).text() === "Register") {        // If text value is register, that means that user pressed unregister button
+                    $(this).removeClass('unfollow');        // because first action of function is change text value
+                    $(this).addClass('follow');        // because first action of function is change text value
+                    console.log("Unregister taped");
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/event/unregister',
+                        data: {event_id: event_id},
+                        success: function (data) {
+                            console.log(data.success);
+                        }
+                    });
+
+                } else if ($(this).text() === "Unregister") {
+                    $(this).addClass('unfollow');
+                    $(this).removeClass('follow');
+                    console.log("Register taped");
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/event/register',
+                        data: {event_id: event_id},
+                        success: function (data) {
+                            console.log(data.success);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -46,15 +104,19 @@
     <div class="topnav">
         <div class="align-items-left">
             <a href="{{ url('/home') }}">HOME</a>
-            <a href="#">MY EVENTS</a>
+            <a href="/profile/{{ auth()->user()->id }}/registered/event">MY EVENTS</a>
+            @if (auth()->user()->isOrganizer())
+                <a href="/profile/{{ auth()->user()->id }}/created/event">CREATED EVENTS</a>
+            @endif
         </div>
         <div class="dropdown">
-            <img src="{{ auth()->user()->profile->profileImage() }}" alt="icon" class="rounded-circle"
+            <img src="http://events.final/{{ auth()->user()->profile->profileImage() }}" alt="icon"
+                 class="rounded-circle"
                  style="width: 45px; height: 45px; position: relative; top: 6px;">
             <div class="dropdown-content">
                 <a href="/profile/{{ auth()->user()->id }}">Profile</a>
                 @if(auth()->user()->isOrganizer())
-                    <a href="/event/create">Add new event</a>
+                    <a href="/event/new/create">Add new event</a>
                 @endif
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

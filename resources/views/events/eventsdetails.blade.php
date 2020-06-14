@@ -4,22 +4,22 @@
     <div class="wrapper">
         <div class="row pt-2">
             <div class="leftside">
-                <h1>{{ $event[0]->title }}</h1>
+                <h1>{{ $event->title }}</h1>
                 <p>Created by ...</p>
-                <p class="small">{{ $event[0]->category }}</p>
-                <img alt="photo" class="eventimg" src="../{{ $event[0]->image }}">
+                <p class="small">{{ $event->category }}</p>
+                <img alt="photo" class="eventimg" src="../{{ $event->image }}">
                 <h3 class="desc">Description</h3>
-                <p>{{ $event[0]->description }}</p>
+                <p>{{ $event->description }}</p>
             </div>
             <div class="rightside">
                 <h3>Information</h3>
                 <div class="info">
                     <h4>Date and Time:</h4>
-                    <p class="bottom">{{ $event[0]->date_and_time }}</p>
+                    <p class="bottom">{{ $event->date_and_time }}</p>
                     <h4>Price:</h4>
-                    <p class="bottom">{{ $event[0]->price }}</p>
+                    <p class="bottom">{{ $event->price }}</p>
                     <h4>Place:</h4>
-                    <p>{{ $event[0]->place }}</p>
+                    <p>{{ $event->place }}</p>
                 </div>
             </div>
         </div>
