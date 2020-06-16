@@ -10,9 +10,10 @@
                     <div class="row">
                         <h2>Create event</h2>
                     </div>
+                    <span class="errormsg">* Reqired fields</span>
 
                     <div class="form-group row">
-                        <label for="title" class="col-md-4 col-form-label">Title</label>
+                        <label for="title" class="col-md-4 col-form-label">Title <span class="error">*</span></label>
 
                         <input id="title"
                                type="text"
@@ -29,7 +30,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="date_and_time" class="col-md-4 col-form-label">Date and time</label>
+                        <label for="date_and_time" class="col-md-4 col-form-label">Date and time <span class="error">*</span><span class="smalldate">(YYYY-MM-DD)</span></label>
 
                         <input id="date_and_time"
                                type="datetime-local"
@@ -47,7 +48,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="place" class="col-md-4 col-form-label">Place</label>
+                        <label for="place" class="col-md-4 col-form-label">Place <span class="error">*</span></label>
 
                         <input id="place"
                                type="text"
@@ -64,13 +65,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="category" class="col-md-4 col-form-label">Category</label>
+                        <label for="category" class="col-md-4 col-form-label">Category <span class="error">*</span></label>
 
-                        <input id="category"
-                               type="text"
-                               class="form-control @error('category') is-invalid @enderror"
-                               name="category"
-                               required autocomplete="category" autofocus>
+                        <select id="category" class="form-control @error('category') is-invalid @enderror" name="category" required autocomplete="category" autofocus>
+                            @foreach(App\Category::all() as $category)
+                                <option>{{ $category->category }}</option>
+                            @endforeach
+                        </select>
 
                         @error('category')
                         <span class="invalid-feedback" role="alert">
@@ -80,7 +81,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="price" class="col-md-4 col-form-label">Price</label>
+                        <label for="price" class="col-md-4 col-form-label">Price <span class="error">*</span></label>
 
                         <input id="price"
                                type="text"
@@ -97,7 +98,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="description" class="col-md-4 col-form-label">Description</label>
+                        <label for="description" class="col-md-4 col-form-label">Description <span class="error">*</span></label>
 
                         <input id="description"
                                type="text"
@@ -114,7 +115,7 @@
                     </div>
 
                     <div class="row">
-                        <label for="image" class="col-md-4 col-form-label">Event Image</label>
+                        <label for="image" class="col-md-4 col-form-label">Event Image <span class="error">*</span></label>
                         <input type="file" class="form-control-file" id="image" name="image">
                         @error('image')
                         <span class="invalid-feedback" role="alert">
@@ -132,4 +133,20 @@
             </div>
         </form>
     </div>
+
+    <style>
+        .errormsg {
+            font-size: 15px;
+            margin-left: -11px;
+            color: #AAAAAA;
+        }
+
+        .error {
+            color: #AAAAAA;
+        }
+
+        .smalldate {
+            font-size: 12px;
+        }
+    </style>
 @endsection

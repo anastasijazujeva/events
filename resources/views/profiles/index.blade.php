@@ -50,7 +50,7 @@
                                 <h5>{{ $event->place }}</h5>
                             </div>
                             <div class="category-wrapper">
-                                {{ $event->category }}
+                                {{ \App\Category::find($event->category_id)->category }}
                             </div>
                             <div class="price-wrapper">
                                 <h4>{{ $event->price }} €</h4>
@@ -80,7 +80,7 @@
                             <h5>{{ $event->place }}</h5>
                         </div>
                         <div class="category-wrapper">
-                            {{ $event->category }}
+                            {{ \App\Category::find($event->category_id)->category }}
                         </div>
                         <div class="price-wrapper">
                             <h4>{{ $event->price }} €</h4>

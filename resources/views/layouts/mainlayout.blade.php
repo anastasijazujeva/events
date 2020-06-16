@@ -129,6 +129,7 @@
             @if (auth()->user()->isOrganizer())
                 <a href="/profile/{{ auth()->user()->id }}/created/event">CREATED EVENTS</a>
             @endif
+            <a href="{{ url('/categories') }}">CATEGORIES</a>
         </div>
         <div class="dropdown">
             <img src="http://events.final/{{ auth()->user()->profile->profileImage() }}" alt="icon"

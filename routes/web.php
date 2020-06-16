@@ -48,3 +48,6 @@ Route::get('/event/{event}/delete', 'EventsController@delete');
 Route::patch('event/{event}', 'EventsController@update');
 Route::post('event/register', 'EventsController@registerForEvent');
 Route::post('event/unregister', 'EventsController@unregisterFromEvent');
+
+Route::get('/categories', 'CategoryController@index');
+Route::get('/categories/{id}', 'CategoryController@showFilteredEvents');

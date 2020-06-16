@@ -6,6 +6,7 @@ use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Organizator;
+use App\Category;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 
@@ -42,7 +43,10 @@ class EventsController extends Controller
         $event->title = $data['title'];
         $event->date_and_time = $data['date_and_time'];
         $event->place = $data['place'];
-        $event->category = $data['category'];
+
+        $categoryId = Category::where('category', $data['category'])->get()[0]->id;
+        $event->category_id = $categoryId;
+
         $event->description = $data['description'];
         $event->price = $data['price'];
         $event->organizator_id = auth()->user()->organizator->id;

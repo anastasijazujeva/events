@@ -10,7 +10,8 @@
         <div style="display: flex; width: 1100px; margin: 0 auto; padding-top: 50px;">
             <div class="leftside">
                 <h1>{{ $event->title }}</h1>
-                <p class="small">{{ $event->category }}</p>
+                <p>Created by <span class="creatorsize">{{ $event->organizator->username }}</span></p>
+                <p class="small">{{ \App\Category::find($event->category_id)->category }}</p>
                 <img alt="photo" class="eventimg" src="../{{ $event->image }}">
                 <h3 class="desc">Description</h3>
                 <p>{{ $event->description }}</p>
@@ -30,18 +31,21 @@
         </div>
         <div>
             <h3 class="comloc">Comments</h3>
-            <form method="post" action="{{ route('comment.add') }}">
-                @csrf
-                <div style="width: 600px; margin: 0 auto;">
-                    <p class="par">Write your comment:</p>
-                    <div class="comments">
-                        <textarea name="comment" rows="5" cols="70"></textarea>
+            @if(auth()->user())
+                <form method="post" action="{{ route('comment.add') }}">
+                    @csrf
+                    <div style="width: 600px; margin: 0 auto;">
+                        <p class="par">Write your comment:</p>
+                        <div class="comments">
+                            <textarea name="comment" rows="5" cols="70"></textarea>
+                        </div>
+                        <input name="event_id" value="{{ $event->id }}" style="display:none">
+                        <button class="commentbtn" id="submit_comment">Submit</button>
                     </div>
-                    <input name="event_id" value="{{ $event->id }}" style="display:none">
-                    <button class="commentbtn" id="submit_comment">Submit</button>
-                </div>
-            </form>
+                </form>
+            @endif
         </div>
+    </div>
 
         @foreach($event->comment as $comment)
             <div class="comment-section-wrapper">
@@ -56,6 +60,5 @@
                 </div>
             </div>
         @endforeach
-    </div>
 
 @endsection

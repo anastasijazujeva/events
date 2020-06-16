@@ -71,7 +71,7 @@
                                type="text"
                                class="form-control @error('category') is-invalid @enderror"
                                name="category"
-                               value="{{ $event->category }}"
+                               value="{{ \App\Category::find($event->category_id)->category }}"
                                required autocomplete="category" autofocus>
 
                         @error('category')
