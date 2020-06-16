@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Maven+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 * {
     padding: 0px;
@@ -61,6 +59,7 @@ body {
 .information .description {
     padding-left: 10px;
     padding-bottom: 1px;
+    height: 40px;
 }
 
 .align-items-left {
@@ -116,4 +115,9 @@ body {
 
 .justify-content-both {
     clear: both;
+}
+
+.event-organizer-paragraph {
+    font-family: 'Indie Flower', serif;
+    font-size: 20px;
 }
