@@ -41,7 +41,7 @@
                         </div>
                         <div class="event-information-wrapper">
                             <div class="title-date-and-time-wrapper">
-                                <h2>{{ $event->title }}</h2>
+                                <h2><a href="../event/{{ $event->id }}">{{ $event->title }}</a></h2>
                                 <div class="date-and-time-wrapper">
                                     <p>{{ $event->date_and_time }}</p>
                                 </div>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="event-information-wrapper">
                         <div class="title-date-and-time-wrapper">
-                            <h2>{{ $event->title }}</h2>
+                            <h2><a href="../event/{{ $event->id }}">{{ $event->title }}</a></h2>
                             <div class="date-and-time-wrapper">
                                 <p>{{ $event->date_and_time }}</p>
                             </div>

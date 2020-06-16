@@ -10,13 +10,13 @@
         <div style="display: flex; width: 1100px; margin: 0 auto; padding-top: 50px;">
             <div class="leftside">
                 <h1>{{ $event->title }}</h1>
-                <p>Created by <span class="creatorsize">{{ $event->organizator->username }}</span></p>
                 <p class="small">{{ $event->category }}</p>
                 <img alt="photo" class="eventimg" src="../{{ $event->image }}">
                 <h3 class="desc">Description</h3>
                 <p>{{ $event->description }}</p>
             </div>
             <div class="rightside">
+                <p style="position: relative; bottom: 220px;">Organizer: <span class="creatorsize"><a href="/profile/{{ $event->organizator->user_id }}">{{ $event->organizator->user->username }}</a></span></p>
                 <h3>Information</h3>
                 <div class="info">
                     <h4>Date and Time:</h4>
