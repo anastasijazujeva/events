@@ -20,8 +20,7 @@ class ProfilesController extends Controller
     public function index($id)
     {
         $user = User::findOrFail($id);
-        if ($user->role == 'administrator')
-        {
+        if ($user->role == 'administrator') {
             $this->authorize('create', Category::class);
         }
         return view('profiles.index', ['user' => $user]);
@@ -39,14 +38,11 @@ class ProfilesController extends Controller
         $this->authorize('update', $user->profile);
 
         $data = request()->validate([
-            'username' => ['required', 'unique:users', 'string'],
             'description' => 'required',
             'url' => 'url',
             'image' => '',
         ]);
 
-        auth()->user()->username = $data['username'];
-        auth()->user()->save();
 
         if (request('image')) {
             $imagePath = request('image')->store('images/profile', 'public');
