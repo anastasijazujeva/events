@@ -22,4 +22,9 @@ class Event extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function category()
+    {
+        return $this->hasMany('App\Category');
+    }
 }

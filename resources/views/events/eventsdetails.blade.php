@@ -6,7 +6,7 @@
             <div class="leftside">
                 <h1>{{ $event->title }}</h1>
                 <p>Created by <span class="creatorsize">{{ $event->organizator->username }}</span></p>
-                <p class="small">{{ $event->category }}</p>
+                <p class="small">{{ \App\Category::find($event->category_id)->category }}</p>
                 <img alt="photo" class="eventimg" src="../{{ $event->image }}">
                 <h3 class="desc">Description</h3>
                 <p>{{ $event->description }}</p>
@@ -25,15 +25,17 @@
         </div>
         <div>
             <h3 class="comloc">Comments</h3>
-            <form method="post" action="{{ route('comment.add') }}">
-                @csrf
-                <p class="par">Write your comment:</p>
-                <div class="comments">
-                    <textarea name="comment" rows="5" cols="70"></textarea>
-                </div>
-                <input name="event_id" value="{{ $event->id }}" style="display:none">
-                <button class="commentbtn" id="submit_comment">Submit</button>
-            </form>
+            @if(auth()->user())
+                <form method="post" action="{{ route('comment.add') }}">
+                    @csrf
+                    <p class="par">Write your comment:</p>
+                    <div class="comments">
+                        <textarea name="comment" rows="5" cols="70"></textarea>
+                    </div>
+                    <input name="event_id" value="{{ $event->id }}" style="display:none">
+                    <button class="commentbtn" id="submit_comment">Submit</button>
+                </form>
+            @endif
         </div>
 
         @foreach($event->comment as $comment)
