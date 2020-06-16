@@ -1,6 +1,7 @@
 @extends('layouts.mainlayout')
 
 @section('content')
+    <a href="/home" class="back">Back to home</a>
     @if($events->count() == 0)
         <div class="registered-event-list-wrapper">
             <div class="event-image-wrapper">

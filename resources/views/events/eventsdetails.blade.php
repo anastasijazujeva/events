@@ -1,6 +1,7 @@
 @extends('layouts.mainlayout')
 
 @section('content')
+    <a href="/home" class="back">Back to home</a>
     @if ($event->organizator->user_id == auth()->user()->id)
         <div class="edit-button-wrapper">
             <a href="{{ $event->id }}/edit">Edit event</a>

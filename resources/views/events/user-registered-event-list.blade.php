@@ -1,6 +1,7 @@
 @extends('layouts.mainlayout')
 
 @section('content')
+    <a href="/home" class="back">Back to home</a>
     @if($events->count() == 0)
         <div class="registered-event-list-wrapper">
             <div class="event-image-wrapper">
@@ -11,7 +12,7 @@
                     <h2>You don't have registered at any event yet :(</h2>
                 </div>
                 <div style="padding: 10px 60px">
-                    <h5>Check out all events at <a href="/home">home</a> page, or choose one from <a href="#">categories</a> list</h5>
+                    <h5>Check out all events at <a href="/home">home</a> page, or choose one from <a href="/categories">categories</a> list</h5>
                 </div>
             </div>
         </div>
