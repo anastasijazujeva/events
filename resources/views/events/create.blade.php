@@ -18,6 +18,7 @@
                                type="text"
                                class="form-control @error('title') is-invalid @enderror"
                                name="title"
+                               value = "{{old('title')}}"
                                required autocomplete="title" autofocus>
 
                         @error('title')
@@ -32,7 +33,7 @@
 
                         <input id="date_and_time"
                                type="datetime-local"
-                               value="2020-01-01 00:00"
+                               value="{{ old('date_and_time') ?? '2020-01-01 00:00' }}"
                                class="form-control @error('date_and_time') is-invalid @enderror"
                                name="date_and_time"
                                required autocomplete="date"
@@ -52,6 +53,7 @@
                                type="text"
                                class="form-control @error('place') is-invalid @enderror"
                                name="place"
+                               value="{{ old('place') }}"
                                required autocomplete="place" autofocus>
 
                         @error('place')
@@ -84,6 +86,7 @@
                                type="text"
                                class="form-control @error('price') is-invalid @enderror"
                                name="price"
+                               value="{{ old('price') }}"
                                required autocomplete="price" autofocus>
 
                         @error('price')
@@ -100,6 +103,7 @@
                                type="text"
                                class="form-control @error('description') is-invalid @enderror"
                                name="description"
+                               value="{{ old('description') }}"
                                required autocomplete="descrpition" autofocus>
 
                         @error('description')

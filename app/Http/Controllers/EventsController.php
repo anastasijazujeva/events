@@ -80,7 +80,9 @@ class EventsController extends Controller
         ]);
 
         if (request('image')) {
-            $imagePath = request('image')->store('images/events', 'public');
+            $imagePath = request('image')->store
+
+            ('images/events', 'public');
             $image = Image::make(public_path() . "/{$imagePath}")->fit(1200, 1200);
             $image->save();
             $imageArray = ['image' => $imagePath];

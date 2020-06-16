@@ -20,7 +20,7 @@
                                type="text"
                                class="form-control @error('title') is-invalid @enderror"
                                name="title"
-                               value="{{ old('title') ?? $event->title }}"
+                               value="{{old('title') ?? $event->title }}"
                                required autocomplete="title" autofocus>
 
                         @error('title')
