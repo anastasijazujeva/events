@@ -18,7 +18,7 @@
                         <div class="description">
                             <p>{{ \App\Category::find($event->category_id)->category }}</p>
                             <div class="follow-button-wrapper">
-                                @if(auth()->user())
+                                @if(auth()->user() && $event->organizator->user_id != auth()->user()->id)
                                     @if(auth()->user()->events->count() > 0)
                                         @if(auth()->user()->events->contains($event))
                                             <button class="unfollow" data-id="{{ $event->id }}">Unregister</button>

@@ -14,18 +14,18 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="title" class="col-md-4 col-form-label">Title</label>
+                        <label for="" class="col-md-4 col-form-label">Username</label>
 
-                        <input id="title"
+                        <input id="username"
                                type="text"
-                               class="form-control @error('title') is-invalid @enderror"
-                               name="title"
-                               value="{{ old('title') ?? $user->profile->title }}"
-                               required autocomplete="title" autofocus>
+                               class="form-control @error('username') is-invalid @enderror"
+                               name="username"
+                               value="{{ old('username') ?? $user->username }}"
+                               required autocomplete="username" autofocus>
 
-                        @error('title')
+                        @error('username')
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong>Username is already taken</strong>
                     </span>
                         @enderror
                     </div>
@@ -38,7 +38,7 @@
                                class="form-control @error('description') is-invalid @enderror"
                                name="description"
                                value="{{ old('description') ?? $user->profile->description }}"
-                               required autocomplete="title" autofocus>
+                               required autocomplete="description" autofocus>
 
                         @error('description')
                         <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                                class="form-control @error('url') is-invalid @enderror"
                                name="url"
                                value="{{ old('url') ?? $user->profile->url }}"
-                               required autocomplete="title" autofocus>
+                               required autocomplete="url" autofocus>
 
                         @error('url')
                         <span class="invalid-feedback" role="alert">

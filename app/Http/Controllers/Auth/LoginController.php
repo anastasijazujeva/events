@@ -75,7 +75,7 @@ class LoginController extends Controller
                 $user->password = Hash::make(Str::random(24));
                 $user->save();
                 $profile = new Profile();
-                $profile->title = $user->username;
+                $profile->username = $user->username;
                 $profile->description = 'Description n/a';
                 $profile->image = 'images/anonymus.jpg';
                 $user->profile()->save($profile);
@@ -109,7 +109,7 @@ class LoginController extends Controller
                 $user->password = Hash::make(Str::random(24));
                 $user->save();
                 $profile = new Profile();
-                $profile->title = $user->username;
+                $profile->username = $user->username;
                 $profile->description = 'Description n/a';
                 $profile->image = 'images/anonymus.jpg';
                 $user->profile()->save($profile);

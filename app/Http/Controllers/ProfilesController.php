@@ -34,13 +34,14 @@ class ProfilesController extends Controller
         $this->authorize('update', $user->profile);
 
         $data = request()->validate([
-            'title' => 'required',
+            'username' => ['required', 'unique:users', 'string'],
             'description' => 'required',
             'url' => 'url',
             'image' => '',
         ]);
 
-        //dd(request()->all());
+        auth()->user()->username = $data['username'];
+        auth()->user()->save();
 
         if (request('image')) {
             $imagePath = request('image')->store('images/profile', 'public');

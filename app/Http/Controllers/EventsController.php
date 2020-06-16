@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Organizator;
@@ -125,5 +126,11 @@ class EventsController extends Controller
 
         $response = 'User successfully unregistered from event';
         return response()->json(['success'=>$response]);
+    }
+
+    public function getEventsAPI()
+    {
+        $events = Event::get();
+        return EventResource::collection($events);
     }
 }

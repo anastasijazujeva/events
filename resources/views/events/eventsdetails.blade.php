@@ -1,8 +1,13 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-    <div class="wrapper">
-        <div class="row pt-2">
+    @if ($event->organizator->user_id == auth()->user()->id)
+        <div class="edit-button-wrapper">
+            <a href="{{ $event->id }}/edit">Edit event</a>
+        </div>
+    @endif
+    <div class="event-details-wrapper">
+        <div style="display: flex; width: 1100px; margin: 0 auto; padding-top: 50px;">
             <div class="leftside">
                 <h1>{{ $event->title }}</h1>
                 <p>Created by <span class="creatorsize">{{ $event->organizator->username }}</span></p>
@@ -12,6 +17,7 @@
                 <p>{{ $event->description }}</p>
             </div>
             <div class="rightside">
+                <p style="position: relative; bottom: 220px;">Organizer: <span class="creatorsize"><a href="/profile/{{ $event->organizator->user_id }}">{{ $event->organizator->user->username }}</a></span></p>
                 <h3>Information</h3>
                 <div class="info">
                     <h4>Date and Time:</h4>
@@ -28,23 +34,31 @@
             @if(auth()->user())
                 <form method="post" action="{{ route('comment.add') }}">
                     @csrf
-                    <p class="par">Write your comment:</p>
-                    <div class="comments">
-                        <textarea name="comment" rows="5" cols="70"></textarea>
+                    <div style="width: 600px; margin: 0 auto;">
+                        <p class="par">Write your comment:</p>
+                        <div class="comments">
+                            <textarea name="comment" rows="5" cols="70"></textarea>
+                        </div>
+                        <input name="event_id" value="{{ $event->id }}" style="display:none">
+                        <button class="commentbtn" id="submit_comment">Submit</button>
                     </div>
-                    <input name="event_id" value="{{ $event->id }}" style="display:none">
-                    <button class="commentbtn" id="submit_comment">Submit</button>
                 </form>
             @endif
         </div>
+    </div>
 
         @foreach($event->comment as $comment)
-            <div class="comment-section">
-                <p class="usercomname"><img src="{{ $comment->user->profile->image }}" alt="user_photo"><strong> Name: </strong>{{ $comment->user->username }}</p>
-                <p>{{ $comment->text }}</p>
-                <p class="commentdate"><strong>Created: </strong>{{ $comment->created_at }}</p>
+            <div class="comment-section-wrapper">
+                <div class="comment-profile-image-wrapper">
+                    <img src="http://events.final/{{$comment->user->profile->image}}" alt="profile-image">
+                    <div id="comment-author-name"><h6><a href="/profile/{{ $comment->user->id }}">{{$comment->user->username}}</a></h6></div>
+                </div>
+                <div class="comment-text-wrapper">
+                    <div style="padding: 20px 60px">
+                        <p>{{ $comment->text }}</p>
+                    </div>
+                </div>
             </div>
         @endforeach
-    </div>
 
 @endsection
