@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Event;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,13 @@ use Illuminate\Support\Facades\File;
 
 class ProfilesController extends Controller
 {
-    public function index($user)
+    public function index($id)
     {
-        $user = User::findOrFail($user);
+        $user = User::findOrFail($id);
+        if ($user->role == 'administrator')
+        {
+            $this->authorize('create', Category::class);
+        }
         return view('profiles.index', ['user' => $user]);
     }
 

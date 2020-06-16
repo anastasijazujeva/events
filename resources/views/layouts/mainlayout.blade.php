@@ -88,7 +88,9 @@
 <script>
     var topbutton = document.getElementById("topbtn");
 
-    window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -130,6 +132,9 @@
                 <a href="/profile/{{ auth()->user()->id }}/created/event">CREATED EVENTS</a>
             @endif
             <a href="{{ url('/categories') }}">CATEGORIES</a>
+            @if (auth()->user()->isAdmin())
+                <a href="{{ url('/admin') }}">ADMIN</a>
+            @endif
         </div>
         <div class="dropdown">
             <img src="http://events.final/{{ auth()->user()->profile->profileImage() }}" alt="icon"

@@ -50,4 +50,7 @@ Route::post('event/register', 'EventsController@registerForEvent');
 Route::post('event/unregister', 'EventsController@unregisterFromEvent');
 
 Route::get('/categories', 'CategoryController@index');
+Route::post('/categories', 'CategoryController@store');
 Route::get('/categories/{id}', 'CategoryController@showFilteredEvents');
+
+Route::get('/admin', 'AdminController@index');
