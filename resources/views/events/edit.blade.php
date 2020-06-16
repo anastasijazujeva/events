@@ -65,14 +65,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="category" class="col-md-4 col-form-label">Category</label>
+                        <label for="category" class="col-md-4 col-form-label">Category <span class="error">*</span></label>
 
-                        <input id="category"
-                               type="text"
-                               class="form-control @error('category') is-invalid @enderror"
-                               name="category"
-                               value="{{ \App\Category::find($event->category_id)->category }}"
-                               required autocomplete="category" autofocus>
+                        <select id="category" class="form-control @error('category') is-invalid @enderror" name="category" required autocomplete="category" autofocus>
+                            @foreach(App\Category::all() as $category)
+                                <option>{{ $category->category }}</option>
+                            @endforeach
+                        </select>
 
                         @error('category')
                         <span class="invalid-feedback" role="alert">

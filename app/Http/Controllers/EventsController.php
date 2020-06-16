@@ -83,6 +83,10 @@ class EventsController extends Controller
             'image' => '',
         ]);
 
+        $data['category'] = Category::where('category', $data['category'])->get()[0]->id;
+        $data['category_id'] = $data['category'];
+        unset($data['category']);
+
         if (request('image')) {
             $imagePath = request('image')->store('images/events', 'public');
 
