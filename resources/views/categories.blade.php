@@ -9,7 +9,7 @@
                     <img alt="photo" class="w-100" src="http://events.final/{{ $category->image }}">
                     <div class="category">
                         <div class="catinfo">
-                          <a href="/categories/{{ $category->id }}"><span class="cattitle">{{ $category->category }}</span>
+                            <a href="/categories/{{ $category->id }}"><span class="cattitle">{{ $category->category }}</span></a>
                         </div>
                     </div>
                 </div>

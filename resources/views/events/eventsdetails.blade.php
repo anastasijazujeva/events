@@ -2,23 +2,26 @@
 
 @section('content')
     <a href="/home" class="back">Back to home</a>
-    @if ($event->organizator->user_id == auth()->user()->id)
-        <div class="edit-button-wrapper">
-            <a href="{{ $event->id }}/edit">Edit event</a>
-        </div>
+    @if(auth()->user())
+        @if ($event->organizator->user_id == auth()->user()->id)
+            <div class="edit-button-wrapper">
+                <a href="{{ $event->id }}/edit">Edit event</a>
+            </div>
+        @endif
     @endif
     <div class="event-details-wrapper">
         <div style="display: flex; width: 1100px; margin: 0 auto; padding-top: 50px;">
             <div class="leftside">
                 <h1>{{ $event->title }}</h1>
-                <p>Created by <span class="creatorsize">{{ $event->organizator->username }}</span></p>
                 <p class="small">{{ \App\Category::find($event->category_id)->category }}</p>
                 <img alt="photo" class="eventimg" src="../{{ $event->image }}">
                 <h3 class="desc">Description</h3>
                 <p>{{ $event->description }}</p>
             </div>
             <div class="rightside">
-                <p style="position: relative; bottom: 220px;">Organizer: <span class="creatorsize"><a href="/profile/{{ $event->organizator->user_id }}">{{ $event->organizator->user->username }}</a></span></p>
+                <p style="position: relative; bottom: 220px;">Organizer: <span class="creatorsize"><a
+                            href="/profile/{{ $event->organizator->user_id }}">{{ $event->organizator->user->username }}</a></span>
+                </p>
                 <h3>Information</h3>
                 <div class="info">
                     <h4>Date and Time:</h4>
@@ -48,18 +51,19 @@
         </div>
     </div>
 
-        @foreach($event->comment as $comment)
-            <div class="comment-section-wrapper">
-                <div class="comment-profile-image-wrapper">
-                    <img src="http://events.final/{{$comment->user->profile->image}}" alt="profile-image">
-                    <div id="comment-author-name"><h6><a href="/profile/{{ $comment->user->id }}">{{$comment->user->username}}</a></h6></div>
-                </div>
-                <div class="comment-text-wrapper">
-                    <div style="padding: 20px 60px">
-                        <p>{{ $comment->text }}</p>
-                    </div>
+    @foreach($event->comment as $comment)
+        <div class="comment-section-wrapper">
+            <div class="comment-profile-image-wrapper">
+                <img src="http://events.final/{{$comment->user->profile->image}}" alt="profile-image">
+                <div id="comment-author-name"><h6><a
+                            href="/profile/{{ $comment->user->id }}">{{$comment->user->username}}</a></h6></div>
+            </div>
+            <div class="comment-text-wrapper">
+                <div style="padding: 20px 60px">
+                    <p>{{ $comment->text }}</p>
                 </div>
             </div>
-        @endforeach
+        </div>
+    @endforeach
 
 @endsection

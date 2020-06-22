@@ -19,9 +19,11 @@ class EventResource extends JsonResource
             'title' => $this->title,
             'date_and_time' => $this->date_and_time,
             'place' => $this->place,
-            'category' => $this->category,
+            'category' => \App\Category::where('id', $this->category_id)->get()[0]->category,
             'price' => $this->price,
             'description' => $this->description
         ];
+
+
     }
 }
